@@ -2,6 +2,9 @@ package base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import pages.DashboardPage;
 import pages.LoginPage;
@@ -12,7 +15,7 @@ public class BaseTests {
 
     protected WebDriver driver;
 
-    @BeforeTest
+    @BeforeClass
     public void baseSetup() {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
 
@@ -21,11 +24,8 @@ public class BaseTests {
 
         driver = new ChromeDriver();
         driver.get("https://opensource-demo.orangehrmlive.com/");
-        //driver.manage().window().maximize();
+        driver.manage().window().maximize();
         //driver.manage().window().setSize(new Dimension(925, 950));
-    }
-    @BeforeTest
-    public void testLoginSuccess() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.setUsername("Admin");
         loginPage.setPassword("admin123");
@@ -34,8 +34,7 @@ public class BaseTests {
     }
 
 //    @AfterClass
-//    public void tearDown()
-//    {
+//    public void tearDown() {
 //        driver.quit();
 //    }
 
