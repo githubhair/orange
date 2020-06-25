@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
 
@@ -14,10 +15,11 @@ public class LoginPage extends BasePage {
     }
 
     public void setUsername(String username){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameField));
         driver.findElement(usernameField).sendKeys(username);
     }
     public void setPassword(String password){
-
+        wait.until(ExpectedConditions.visibilityOfElementLocated(passwordField));
         driver.findElement(passwordField).sendKeys(password);
     }
 

@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class DashboardPage extends BasePage{
 
@@ -25,16 +26,15 @@ public class DashboardPage extends BasePage{
     }
     public TimesheetsPage clickTimesheetsLink(){
         driver.findElement(timesheetsLink).click();
-        return new TimesheetsPage();
+        return new TimesheetsPage(driver);
     }
     public LeaveListPage clickLeaveListLink(){
         driver.findElement(leaveListLink).click();
-        return new LeaveListPage();
+        return new LeaveListPage(driver);
     }
     public EmployeeInformationPage clickPIMLink(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(pimLink));
         driver.findElement(pimLink).click();
         return new EmployeeInformationPage(driver);
-
-
     }
 }
