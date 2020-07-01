@@ -17,6 +17,14 @@ public class AssignLeavePage extends BasePage{
     By messageResult = By.xpath("//*[@id=\"leaveBalance_details_link\"]");
     By commentArea = By.xpath("//textarea[@id='assignleave_txtComment']");
     By assignButton = By.id("assignBtn");
+    By leaveFirstLevelMenu = By.xpath("//b[.='Leave']");
+    By assignLeaveButton = By.id("menu_leave_assignLeave");
+    By entitlementsMenu = By.xpath("//b[.='Leave']");
+    By addEntitlementsMenu = By.id("menu_leave_Entitlements");
+    By entitlementItem = By.xpath("//a[@id='menu_leave_addLeaveEntitlement']");
+    By addEmployeeNameEntitlement = By.id("entitlements_employee_empName");
+    By entitlementType = By.id("entitlements_leave_type");
+    By entitlementPeriod = By.id("period");
 
     public AssignLeavePage(WebDriver driver){super(driver); }
 
@@ -35,13 +43,39 @@ public class AssignLeavePage extends BasePage{
         driver.findElement(toDateLeave).clear();
         driver.findElement(toDateLeave).sendKeys(endDate);
     }
+    public void enterComment(String text) {
+        driver.findElement(commentArea).sendKeys(text);
+    }
+    public void clickEntitlementsMenu() throws InterruptedException {
+        Thread.sleep(1000);
+        driver.findElement(entitlementsMenu).click();
+    }
+    public void clickAddEntitlementsMenu() throws InterruptedException {
+        Thread.sleep(1000);
+        driver.findElement(addEntitlementsMenu).click();
+    }
+    public void clickAddEntitilementItem() {
+        //Thread.sleep(1000);
+        driver.findElement(entitlementItem).click();
+    }
+    public void setEntitlementEmployeeNameField(String employeeName){
+        driver.findElement(addEmployeeNameEntitlement).click();
+        driver.findElement(addEmployeeNameEntitlement).sendKeys(employeeName);
+    }
+    public void setEntitlementType(String type){
+        driver.findElement(entitlementType).sendKeys(type);
+    }
+
+    public void setLeaveTypeDropdown(){
+        driver.findElement(entitlementType);
+    }
+    public void setGetEntitlementPeriod(){
+        driver.findElement(entitlementPeriod);
+    }
+
     public String leaveMessageResult(){
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(messageResult));
         return driver.findElement(messageResult).getText();
     }
-    public void comment(String text) {
-        driver.findElement(commentArea).sendKeys(text);
-    }
-    //public void
 }
