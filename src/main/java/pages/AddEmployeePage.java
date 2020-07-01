@@ -84,15 +84,14 @@ public class AddEmployeePage extends BasePage {
     }
 
     public void clickWelcomeLink() throws InterruptedException {
-            Thread.sleep(1000);
-            driver.findElement(welcomeLink).click();
+        Thread.sleep(2000);
+        driver.findElement(welcomeLink).click();
 
-        }
+    }
 
     public LoginPage clickLogout() throws InterruptedException {
-            Thread.sleep(1000);
-            driver.findElement(logoutButton).click();
-            return new LoginPage(driver);
-
+        Thread.sleep(2000);
+        driver.findElement(logoutButton).click();
+        return new LoginPage(driver);
     }
 }
