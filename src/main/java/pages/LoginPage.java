@@ -14,8 +14,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void setUsername(String username){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameField));
+    public void setUsername(String username) {
         driver.findElement(usernameField).sendKeys(username);
     }
     public void setPassword(String password){
