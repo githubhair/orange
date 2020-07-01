@@ -1,5 +1,6 @@
 package base;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -28,8 +29,8 @@ public class BaseTests {
         driver.manage().window().maximize();
         //driver.manage().window().setSize(new Dimension(925, 950));
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.setUsername("danadmin");
-        loginPage.setPassword("password1");
+        loginPage.setUsername("Admin");
+        loginPage.setPassword("admin123");
         DashboardPage dashboard = loginPage.clickLoginButton();
         assertEquals(dashboard.getHeaderText(), "Dashboard");
 
@@ -59,14 +60,42 @@ public class BaseTests {
         addEmployeePage.confirmNewPassword(randomlyGeneratedId);
         addEmployeePage.clickSaveButton();
 
-        //Logout
-        addEmployeePage.clickWelcomeLink();
-        addEmployeePage.clickLogout();
+        AssignLeavePage assignLeave = new AssignLeavePage(driver);
+        assignLeave.clickEntitlementsMenu();
+        assignLeave.clickAddEntitlementsMenu();
+        assignLeave.clickAddEntitilementItem();
+
+        assignLeave.setEntitlementEmployeeNameField(randomlyGeneratedId);
+        //assignLeave.clickLeaveTypeDropdown("Vacation US" + Keys.TAB);
+        //assignLeave.setEntitlementType(randomlyGeneratedId + Keys.);
+        // Types are:
+        // Vacation US
+        // FMLA US
+        // Maternity US
+        // Paternity US
+
+
+
+//        assignLeave.clickAddEntitlementsMenu();
+
+//        assignLeave.clickLeaveFirstLevelMenu();
+//        assignLeave.clickAssignLeaveSubMenuButton();
+//        assignLeave.clickEmployeeNameField(randomlyGeneratedId + Keys.ENTER);
+//        assignLeave.clickLeaveTypeDropdown("Vacation US" + Keys.TAB);
+//        assignLeave.enterStartDate("2020-07-01");
+//        assignLeave.enterToDate("2021-07-01" + Keys.ENTER);
+//        assignLeave.enterComment("This is a test");
+//        dashboard.clickAssignLeaveLink();
     }
+}
+        //Logout
+//        addEmployeePage.clickWelcomeLink();
+//        addEmployeePage.clickLogout();
 
 //    @AfterClass
 //    public void tearDown() {
 //        driver.quit();
 //    }
 
-}
+
+
