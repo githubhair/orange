@@ -14,21 +14,20 @@ public class NewUserTests extends BaseTests {
 
     //Validates Employee login
     @Test
-    public void ValidateEmployeeLogin() {
+    public void ValidateEmployeeLogin() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.setUsername(randomlyGeneratedId);
         loginPage.setPassword(randomlyGeneratedId);
         loginPage.clickLoginButton();
 
+        DashboardPage dashboard = new DashboardPage(driver);
+        assertEquals(dashboard.getHeaderText(), "Dashboard");
+
+        AddEmployeePage addEmployeePage = new AddEmployeePage(driver);
+        addEmployeePage.clickWelcomeLink();
+        addEmployeePage.clickLogout();
     }
 }
-//            DashboardPage dashboard = new DashboardPage(driver);
-//            assertEquals(dashboard.getHeaderText(), "Dashboard");
-
-//            AddEmployeePage addEmployeePage = new AddEmployeePage(driver);
-//            addEmployeePage.clickWelcomeLink();
-//            addEmployeePage.clickLogout();
-
 
 //    @AfterTest
 //    public void testCleanup() {
