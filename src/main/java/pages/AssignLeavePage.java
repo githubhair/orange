@@ -25,6 +25,8 @@ public class AssignLeavePage extends BasePage{
     By addEmployeeNameEntitlement = By.id("entitlements_employee_empName");
     By entitlementType = By.id("entitlements_leave_type");
     By entitlementPeriod = By.id("period");
+    By entitlementBulkAssignCheckbox = By.id("entitlements_filters_bulk_assign");
+    By entitlementHours = By.id("entitlements[entitlement]");
 
     public AssignLeavePage(WebDriver driver){super(driver); }
 
@@ -55,22 +57,14 @@ public class AssignLeavePage extends BasePage{
         driver.findElement(addEntitlementsMenu).click();
     }
     public void clickAddEntitilementItem() {
-        //Thread.sleep(1000);
         driver.findElement(entitlementItem).click();
     }
-    public void setEntitlementEmployeeNameField(String employeeName){
-        driver.findElement(addEmployeeNameEntitlement).click();
-        driver.findElement(addEmployeeNameEntitlement).sendKeys(employeeName);
-    }
-    public void setEntitlementType(String type){
-        driver.findElement(entitlementType).sendKeys(type);
-    }
+    public void clickBulkEntitlementCheckBox(){
+        driver.findElement(entitlementBulkAssignCheckbox);
 
-    public void setLeaveTypeDropdown(){
-        driver.findElement(entitlementType);
     }
-    public void setGetEntitlementPeriod(){
-        driver.findElement(entitlementPeriod);
+    public void setBulkEntitlementHours(String hours){
+        driver.findElement(entitlementHours).sendKeys(hours);
     }
 
     public String leaveMessageResult(){
