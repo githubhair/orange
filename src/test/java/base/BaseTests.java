@@ -65,7 +65,9 @@ public class BaseTests {
         assignLeave.clickAddEntitlementsMenu();
         assignLeave.clickAddEntitilementItem();
 
-        assignLeave.setEntitlementEmployeeNameField(randomlyGeneratedId);
+        assignLeave.clickBulkEntitlementCheckBox();
+        //assignLeave.setBulkEntitlementHours();
+        System.out.println("print the guid  " + randomlyGeneratedId);
         //assignLeave.clickLeaveTypeDropdown("Vacation US" + Keys.TAB);
         //assignLeave.setEntitlementType(randomlyGeneratedId + Keys.);
         // Types are:
